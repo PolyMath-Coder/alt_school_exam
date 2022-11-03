@@ -14,13 +14,15 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use('/api', require('./routes/routes'));
 app.get('/', (req, res) => {
-  res.status(200).json({ msg: 'Here we are at Alt School!' });
+  res
+    .status(200)
+    .json({ msg: 'Here we are at Alt School Second Semester Exams!' });
 });
-// app.use((err, req, res, next) => {
-//   res
-//     .status(400)
-//     .json({ status: 'error', msg: 'An error happened somehow...' });
-// });
+app.use((err, req, res, next) => {
+  res
+    .status(400)
+    .json({ status: 'error', msg: 'An error happened somehow...' });
+});
 
 connectToDatabase();
 module.exports = app.listen(PORT, () => {

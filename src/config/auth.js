@@ -17,11 +17,14 @@ module.exports = (passport) => {
         secretOrKey: JWT_STRING,
         // jwtFromRequest: ExtractJWT.fromUrlQueryParameter('my_token'),
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+        passReqToCallback: true,
       },
-      async (token, done) => {
+      async (req, token, done) => {
         try {
-          console.log(token);
-          return done(null, token.user);
+          // console.log(token);
+
+          req.mytoken = token.user;
+          return done(null, req.mytoken);
         } catch (err) {
           done(err);
         }
