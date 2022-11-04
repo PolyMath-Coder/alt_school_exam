@@ -2,6 +2,7 @@ const { Router } = require('express');
 const {
   createBlog,
   getSingleBlog,
+  getauthorBlogs,
   getBlogs,
   updateBlogInfo,
   deleteBlog,
@@ -11,6 +12,12 @@ const passport = require('passport');
 const { userAuthentication, bloggerAuthorization } = require('../config/jwt');
 
 router.post('/create', userAuthentication, createBlog);
+router.get(
+  '/author/blogs',
+  userAuthentication,
+  bloggerAuthorization,
+  getauthorBlogs
+);
 router.get('/:id', getSingleBlog);
 router.get('/all', getBlogs);
 router.put(

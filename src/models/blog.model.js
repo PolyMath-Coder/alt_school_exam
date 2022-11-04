@@ -23,6 +23,10 @@ const blogSchema = new Schema(
       type: String,
       enum: ['draft', 'published'],
     },
+    tags: {
+      type: String,
+      trim: true,
+    },
     read_count: {
       type: Number,
       default: 0,
@@ -30,6 +34,9 @@ const blogSchema = new Schema(
     reading_time: {
       type: Number,
       default: 0,
+    },
+    created_at: {
+      type: Date,
     },
   },
   { timestamps: true }
