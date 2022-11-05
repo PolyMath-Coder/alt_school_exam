@@ -20,14 +20,15 @@ This is an api for a pizza app
 
 - Install NodeJS, mongodb
 - pull this repo
+- Run `npm install` to install needful dependencies.
 - update env with example.env
-- run `npm run start:dev`
+- run `npm start` to kickstart application
 
 ---
 
 ## Base URL
 
-- somehostsite.com
+- https://altschool-main-gu6shej6fdawnik.herokuapp.com/
 
 ## Models
 
@@ -35,29 +36,28 @@ This is an api for a pizza app
 
 ### User
 
-| field     | data_type | constraints                                      |
-| --------- | --------- | ------------------------------------------------ |
-| id        | string    | required                                         |
-| username  | string    | required                                         |
-| firstname | string    | optional                                         |
-| lastname  | string    | optional                                         |
-| email     | string    | optional                                         |
-| password  | string    | required                                         |
-| user_type | string    | required, default: user, enum: ['user', 'admin'] |
+| field      | data_type | constraints |
+| ---------- | --------- | ----------- |
+| id         | string    | required    |
+| username   | string    | optional    |
+| first_name | string    | required    |
+| last_name  | string    | required    |
+| email      | string    | required    |
+| password   | string    | required    |
 
-### Order
+### Blog
 
-| field         | data_type | constraints                     |
-| ------------- | --------- | ------------------------------- |
-| id            | string    | required                        |
-| created_at    | date      | required                        |
-| state         | number    | required,default:1              |
-| total_price   | number    | required                        |
-| items         | array     | required                        |
-| item.name     | string    | required                        |
-| item.price    | number    | required                        |
-| item.size     | string    | required, enum: ['m', 's', 'l'] |
-| item.quantity | number    | required, enum: ['m', 's', 'l'] |
+| field        | data_type | constraints                            |
+| ------------ | --------- | -------------------------------------- |
+| id           | string    | required                               |
+| created_at   | date      | required                               |
+| state        | string    | required, enum: ['draft', 'published'] |
+| title        | number    | required                               |
+| reading_time | number    | required                               |
+| read_count   | number    | required                               |
+| tags         | string    | required                               |
+| author       | id        | required                               |
+| body         | string    | required, enum:                        |
 
 ## APIs
 
@@ -73,8 +73,8 @@ This is an api for a pizza app
 {
   "email": "doe@example.com",
   "password": "Password1",
-  "firstname": "jon",
-  "lastname": "doe",
+  "first_name": "jon",
+  "last_name": "doe",
   "username": 'jon_doe",
 }
 ```
