@@ -65,7 +65,7 @@ This is an api for a pizza app
 
 ### Signup User
 
-- Route: /signup
+- Route: /api/auth/signup
 - Method: POST
 - Body:
 
@@ -100,7 +100,7 @@ Success
 
 ### Login User
 
-- Route: /login
+- Route: /api/auth/login
 - Method: POST
 - Body:
 
