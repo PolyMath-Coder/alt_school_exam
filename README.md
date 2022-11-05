@@ -89,8 +89,8 @@ Success
     user: {
         "email": "doe@example.com",
         "password": "Password1",
-        "firstname": "jon",
-        "lastname": "doe",
+        "first_name": "jon",
+        "last_name": "doe",
         "username": 'jon_doe",
     }
 }
@@ -124,9 +124,9 @@ Success
 
 ---
 
-### Create Order
+### Create Blog
 
-- Route: /orders
+- Route: /api/blog/create
 - Method: POST
 - Header
   - Authorization: Bearer {token}
@@ -153,9 +153,9 @@ Success
 
 ---
 
-### Get Order
+### Get Blog
 
-- Route: /orders/:id
+- Route: /api/blog/:id
 - Method: GET
 - Header
   - Authorization: Bearer {token}
