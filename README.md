@@ -92,7 +92,8 @@ Success
         "first_name": "jon",
         "last_name": "doe",
         "username": 'jon_doe",
-    }
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2Njg0OGIzNGQ4OTIzYjA1NjM5NjJkIiwiZW1haWwiOiJheW9sdXdhbWlyYWNsZUBnbWFpbC5jb20ifSwiaWF0IjoxNjY3NjYyOTg5LCJleHAiOjE2Njc2NjY1ODl9.YPoI35Y5oJqdmIRBTWOm8scFR7sDDhCav-Fw8VFaqX8"
 }
 ```
 
@@ -100,7 +101,7 @@ Success
 
 ### Login User
 
-- Route: /api/auth/login
+- Route: /api/auth/signin
 - Method: POST
 - Body:
 
@@ -118,7 +119,7 @@ Success
 ```
 {
     message: 'Login successful',
-    token: 'sjlkafjkldsfjsd'
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM2Njg0OGIzNGQ4OTIzYjA1NjM5NjJkIiwiZW1haWwiOiJheW9sdXdhbWlyYWNsZUBnbWFpbC5jb20ifSwiaWF0IjoxNjY3NjYyOTg5LCJleHAiOjE2Njc2NjY1ODl9.YPoI35Y5oJqdmIRBTWOm8scFR7sDDhCav-Fw8VFaqX8'
 }
 ```
 
@@ -134,7 +135,10 @@ Success
 
 ```
 {
-    items: [{ name: 'chicken pizza', price: 900, size: 'm', quantity: 1}]
+       title: "The King's Horseman",
+      "description": "A tale by moonlight prose.",
+      "blog": "Once upon a time...",
+      "tags": "fiction"
 }
 ```
 
@@ -144,16 +148,42 @@ Success
 
 ```
 {
-    state: 1,
+    status: "success,
+    msg: "Blog successfully created...",
+    blog: {
+      _id: "635fd42952267b47b3f6e0c9",
+      title: "The King's Horseman",
+      "description": "A tale by moonlight prose.",
+      "author": [
+        {
+          "_id": "5fd42952267b47b3f69499",
+          "email: "johndoe@gmail.com",
+          "password": "$2b$10\$tddpO5TKboEOEQaOsL9ytOjF14HwmT95IWlC3eSiKFJ7uizJI9GX6",
+          "first_name":"John",
+          "last_name": "Doe",
+          "username" : "johnnydoe"
+        }
+      ]
+      "state": "published",
+      "read_count": 1,
+      "reading_time": "4"
+      "createdAt": "2022-11-02T13:27:00.984Z",
+      "updatedAt": "2022-11-05T15:43:56.005Z",
+      "__v": 0
+    }
     total_price: 900,
     created_at: Mon Oct 31 2022 08:35:00 GMT+0100,
-    items: [{ name: 'chicken pizza', price: 900, size: 'm', quantity: 1}]
 }
+
+```
+
+```
+
 ```
 
 ---
 
-### Get Blog
+### Get Single Blog
 
 - Route: /api/blog/:id
 - Method: GET
@@ -165,27 +195,73 @@ Success
 
 ```
 {
-    state: 1,
+    status: "success,
+    msg: "Blog successfully retrieved",
+    blog: {
+      _id: "635fd42952267b47b3f6e0c9",
+      title: "The King's Horseman",
+      "description": "A tale by moonlight prose.",
+      "author": [
+        {
+          "_id": "5fd42952267b47b3f69499",
+          "email: "johndoe@gmail.com",
+          "password": "$2b$10\$tddpO5TKboEOEQaOsL9ytOjF14HwmT95IWlC3eSiKFJ7uizJI9GX6",
+          "first_name":"John",
+          "last_name": "Doe",
+          "username" : "johnnydoe"
+        }
+      ]
+      "state": "published",
+      "read_count": 1,
+      "reading_time": "4"
+      "createdAt": "2022-11-02T13:27:00.984Z",
+      "updatedAt": "2022-11-05T15:43:56.005Z",
+      "__v": 0
+    }
     total_price: 900,
     created_at: Mon Oct 31 2022 08:35:00 GMT+0100,
-    items: [{ name: 'chicken pizza', price: 900, size: 'm', quantity: 1}]
 }
 ```
 
 ---
 
-### Get Orders
+### Author gets their Blogs
 
-- Route: /orders
+#### Only authors who create their blogs are authorized here...
+
+- Route: /api/blog/author/blogs
+- Method: GET
+- Header
+  - Authorization: Bearer {token}
+- Responses
+
+Success
+
+```
+{
+    "status": "success",
+     "msg": "All authors blogs successfully retrieved...",
+    data: [ all blog data]
+}
+```
+
+---
+
+### Get Blogs
+
+- Route: /api/blog/all
 - Method: GET
 - Header:
   - Authorization: Bearer {token}
 - Query params:
   - page (default: 1)
-  - per_page (default: 10)
-  - order_by (default: created_at)
-  - order (options: asc | desc, default: desc)
-  - state
+  - per_page (default: 20)
+  - order_by_timestamp (default: created_at)
+  - order_by_read_count(default: read_count)
+  - order_by_reading_time (default: reading_time)
+  - search_by_author(default: authorName)
+  - search_by_title(default: blogTitle)
+  - search_by_tags(default: tags)
   - created_at
 - Responses
 
@@ -193,10 +269,9 @@ Success
 
 ```
 {
-    state: 1,
-    total_price: 900,
-    created_at: Mon Oct 31 2022 08:35:00 GMT+0100,
-    items: [{ name: 'chicken pizza', price: 900, size: 'm', quantity: 1}]
+    "status": "success",
+     "msg": "All blogs successfully retrieved...",
+    data: [ all blog data]
 }
 ```
 
