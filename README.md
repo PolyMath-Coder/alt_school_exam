@@ -225,6 +225,46 @@ Success
 
 ---
 
+### Author updates their Blog
+
+#### Only authors who create their blogs are authorized here...
+
+- Route: /api/blog/update/:id
+- Method: PUT
+- Header
+  - Authorization: Bearer {token}
+- Responses
+
+{
+status: "success,
+msg: "Blog successfully updated...",
+blog: {
+\_id: "635fd42952267b47b3f6e0c9",
+title: "The King's Horseman",
+"description": "A tale by moonlight prose.",
+"author": [
+{
+"_id": "5fd42952267b47b3f69499",
+"email: "johndoe@gmail.com",
+"password": "$2b$10\$tddpO5TKboEOEQaOsL9ytOjF14HwmT95IWlC3eSiKFJ7uizJI9GX6",
+"first_name":"John",
+"last_name": "Doe",
+"username" : "johnnydoe"
+}
+]
+"state": "published",
+"read_count": 1,
+"reading_time": "4"
+"createdAt": "2022-11-02T13:27:00.984Z",
+"updatedAt": "2022-11-05T15:43:56.005Z",
+"\_\_v": 0
+}
+total_price: 900,
+created_at: Mon Oct 31 2022 08:35:00 GMT+0100,
+}
+
+---
+
 ### Author gets their Blogs
 
 #### Only authors who create their blogs are authorized here...
@@ -274,6 +314,19 @@ Success
     data: [ all blog data]
 }
 ```
+
+---
+
+- Route: /api/delete/:id
+- Method: DELETE
+- Header:
+- Authorization: Bearer {token}
+
+{
+"status": "success",
+"msg": "Blog with the id of 'id' has been successfully deleted...",
+
+}
 
 ---
 
