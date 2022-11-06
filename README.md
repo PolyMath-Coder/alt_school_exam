@@ -1,6 +1,6 @@
 # Backend NodeJS Second Semester Examination Project
 
-This is an api for a pizza app
+This is a typical server with EndpointS for a Blogging App. Hence Blog API'ss...
 
 ---
 
