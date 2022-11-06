@@ -6,12 +6,12 @@ This is a typical server with EndpointS for a Blogging App. Hence Blog API'ss...
 
 ## Requirements
 
-1. User should be able to register
-2. User should be able to login with Passport using JWT
-3. Implement basic auth
-4. User should be able to get orders
-5. Users should be able to create orders
-6. Users should be able to update and delete orders
+1. Users can register
+2. User can login with Passport using JWT
+3. Basic Authentication for Logged in user and Authorization for Bloggers owners are set up.
+4. Users(Logged in & not logged in) can retrieve blog(s)
+5. Logged in users can create blogs
+6. Authorized bloggers should be able to update and delete orders
 7. Test application
 
 ---

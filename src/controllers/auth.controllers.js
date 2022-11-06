@@ -41,19 +41,19 @@ const loginUser = (req, res, next) => {
   })(req, res, next);
 };
 
-const seedUsers = async () => {
-  try {
-    await User.insertMany([
-      { name: 'ayomide', password: 'lovely', user_type: 'user' },
-      { name: 'ayomikun', password: 'love', user_type: 'user' },
-      { name: 'ayobami', password: 'lovingly', user_type: 'admin' },
-      { name: 'ayokunumi', password: 'loveful', user_type: 'user' },
-      { name: 'ayodimeji', password: 'loving', user_type: 'user' },
-    ]);
-  } catch (err) {
-    throw new Error('Oops! An error occurred...');
-  }
-};
+// const seedUsers = async () => {
+//   try {
+//     await User.insertMany([
+//       { name: 'ayomide', password: 'lovely', user_type: 'user' },
+//       { name: 'ayomikun', password: 'love', user_type: 'user' },
+//       { name: 'ayobami', password: 'lovingly', user_type: 'admin' },
+//       { name: 'ayokunumi', password: 'loveful', user_type: 'user' },
+//       { name: 'ayodimeji', password: 'loving', user_type: 'user' },
+//     ]);
+//   } catch (err) {
+//     throw new Error('Oops! An error occurred...');
+//   }
+// };
 
 module.exports = { registerUser, seedUsers, loginUser };
 
