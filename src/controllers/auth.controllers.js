@@ -55,6 +55,4 @@ const loginUser = (req, res, next) => {
 //   }
 // };
 
-module.exports = { registerUser, seedUsers, loginUser };
-
-module.exports = { loginUser, registerUser };
+module.exports = { registerUser, loginUser };

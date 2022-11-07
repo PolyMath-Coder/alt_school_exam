@@ -6,10 +6,21 @@ const createBlog = async (req, res) => {
   let data = req.body;
   data.state = 'draft';
   data.created_at = moment().toDate();
+  const content = data.body;
+  const count = content.split(' ').length;
+  const avg = 200;
+  const counted = count / avg;
+  const maincount = Math.ceil(counted);
+  console.log(data);
+  console.log(maincount);
+  data.reading_time = `${maincount} min read.`;
+  // console.log(data.reading_time);
+
   const blog = await Blog.create(data);
   const authorBlog = JSON.parse(JSON.stringify(blog));
+  console.log(authorBlog);
   const newBlog = await Blog.findByIdAndUpdate(
-    authorBlog.id,
+    authorBlog._id,
     { author: req.user.id },
     { new: true }
   ).populate('author');
