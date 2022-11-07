@@ -5,7 +5,6 @@ const passport = require('passport');
 const router = Router();
 router.post(
   '/register',
-  //   passport.authenticate('signup', { session: false }),
   passport.authenticate('signup', { session: false }),
   registerUser
 );

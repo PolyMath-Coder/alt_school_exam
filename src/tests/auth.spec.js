@@ -19,7 +19,7 @@ describe('Auth: Signup', () => {
 
   it('should signup a user', async () => {
     const response = await request(app)
-      .post('/api/register')
+      .post('/api/auth/register')
       .set('content-type', 'application/json')
       .send({
         username: 'tobi',
@@ -47,7 +47,7 @@ describe('Auth: Signup', () => {
 
     // login user
     const response = await request(app)
-      .post('/api/signin')
+      .post('/api/auth/signin')
       .set('content-type', 'application/json')
       .send({
         username: 'johnny',

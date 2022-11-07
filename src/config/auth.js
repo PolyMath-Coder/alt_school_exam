@@ -11,26 +11,26 @@ const jwt = require('jsonwebtoken');
 const JWT_STRING = process.env.JWT_SECRET;
 
 module.exports = (passport) => {
-  passport.use(
-    new JWTstrategy(
-      {
-        secretOrKey: JWT_STRING,
-        // jwtFromRequest: ExtractJWT.fromUrlQueryParameter('my_token'),
-        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        passReqToCallback: true,
-      },
-      async (req, token, done) => {
-        try {
-          // console.log(token);
+  // passport.use(
+  //   new JWTstrategy(
+  //     {
+  //       secretOrKey: JWT_STRING,
+  //       jwtFromRequest: ExtractJWT.fromUrlQueryParameter('my_token'),
+  //       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+  //       passReqToCallback: true,
+  //     },
+  //     async (req, token, done) => {
+  //       try {
+  //         // console.log(token);
 
-          req.mytoken = token.user;
-          return done(null, req.mytoken);
-        } catch (err) {
-          done(err);
-        }
-      }
-    )
-  );
+  //         req.mytoken = token.user;
+  //         return done(null, req.mytoken);
+  //       } catch (err) {
+  //         done(err);
+  //       }
+  //     }
+  //   )
+  // );
 
   passport.use(
     'signup',
