@@ -10,15 +10,15 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    // required: true,
+    required: true,
   },
   first_name: {
     type: String,
-    // required: true,
+    required: true,
   },
   last_name: {
     type: String,
-    // required: true,
+    required: true,
   },
   username: {
     type: String,

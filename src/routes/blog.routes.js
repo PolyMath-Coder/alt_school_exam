@@ -15,7 +15,7 @@ router.post('/create', userAuthentication, createBlog);
 router.get(
   '/author/blogs',
   userAuthentication,
-  bloggerAuthorization,
+  // bloggerAuthorization,
   getauthorBlogs
 );
 router.get('/:id', getSingleBlog);

@@ -11,10 +11,7 @@ const createBlog = async (req, res) => {
   const avg = 200;
   const counted = count / avg;
   const maincount = Math.ceil(counted);
-  console.log(data);
-  console.log(maincount);
   data.reading_time = `${maincount} min read.`;
-  // console.log(data.reading_time);
 
   const blog = await Blog.create(data);
   const authorBlog = JSON.parse(JSON.stringify(blog));
@@ -133,7 +130,7 @@ const getauthorBlogs = async (req, res) => {
   const limit = req.query.limit * 1 || 10;
   const skip = (page - 1) * limit;
   if (req.query.state) {
-    blogs = await Blog.find({ author: authorId, state: req.query.state })
+    blogs = await Blog.find({ author: authorId })
       .skip(skip)
       .limit(limit)
       .exec();
