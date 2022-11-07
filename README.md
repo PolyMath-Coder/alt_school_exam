@@ -1,6 +1,6 @@
 # Backend NodeJS Second Semester Examination Project
 
-This is a typical server with EndpointS for a Blogging App. Hence Blog API'ss...
+This is a typical server with Endpoints for a typical Blogging Application. Hence called the Blog API Project...
 
 ---
 
@@ -11,7 +11,7 @@ This is a typical server with EndpointS for a Blogging App. Hence Blog API'ss...
 3. Basic Authentication for Logged in user and Authorization for Bloggers owners are set up.
 4. Users(Logged in & not logged in) can retrieve blog(s)
 5. Logged in users can create blogs
-6. Authorized bloggers should be able to update and delete orders
+6. Authorized bloggers should be able to update and delete blog(s)
 7. Test application
 
 ---
