@@ -33,7 +33,7 @@ describe('Blog route', () => {
     // create blog in our db
     await Blog.create({
       title: 'The fault in our stars',
-      description: 'A top-rated prose series...',
+      description: 'A top-rated TV series...',
       created_at: moment().toDate(),
       body: 'Once upon a time',
       author: [
@@ -47,7 +47,31 @@ describe('Blog route', () => {
     });
 
     const response = await request(app)
-      .get('/orders')
+      .get('/api/blog/all')
+      .set('content-type', 'application/json')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('newBlog');
+    expect(response.body).toHaveProperty('status', true);
+  });
+  it('should return all known blogs', async () => {
+    await Blog.create({
+      title: 'The fault in our stars',
+      description: 'A top-rated TV series...',
+      created_at: moment().toDate(),
+      body: 'Once upon a time',
+      author: [
+        {
+          email: 'janedoe@gmail.com',
+          first_name: 'Jane',
+          last_name: 'Doe',
+          username: 'jannie',
+        },
+      ],
+    });
+    const response = await request(app)
+      .get('/api/blog/all?state=published')
       .set('content-type', 'application/json')
       .set('Authorization', `Bearer ${token}`);
 
