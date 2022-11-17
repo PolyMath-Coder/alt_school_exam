@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const { json, urlencoded } = express;
+const cors = require('cors');
 
 const { connectToDatabase } = require('./config/mongoose');
 const app = express();
@@ -9,6 +10,7 @@ const passport = require('passport');
 require('./config/auth')(passport);
 
 app.use(express.json());
+app.use(cors({ origin: '*' }));
 
 // app.use(urlencoded());
 app.use(passport.initialize());
