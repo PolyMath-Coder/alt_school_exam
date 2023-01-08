@@ -27,12 +27,11 @@ const loginUser = (req, res, next) => {
       req.login(user, { session: false }, async (err) => {
         if (err) return next(err);
         const body = { id: user._id, email: user.email };
-        const token = jwt.sign({ user: body }, JWT_STRING, { expiresIn: '1h' });
+        // const token = jwt.sign({ user: body }, JWT_STRING, { expiresIn: '1h' });
         return res.json({
           status: 'success',
           msg: 'Login Successful',
           data: user,
-          token,
         });
       });
     } catch (err) {

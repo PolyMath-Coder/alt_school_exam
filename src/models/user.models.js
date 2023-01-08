@@ -24,6 +24,10 @@ const userSchema = new Schema({
     type: String,
     trim: true,
   },
+  photo: {
+    type: String,
+    trim: true,
+  },
 });
 userSchema.pre('save', async function(next) {
   let user = this;
